@@ -47,7 +47,9 @@
     <Compile Include="ExecutionResult.cs" />
     <Compile Include="INumberHandler.cs" />
     <Compile Include="INumberPrinter.cs" />
-    <Compile Include="INumberProcessor.cs" />
+    <Compile Include="INumberProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ITextPrinter.cs" />
     <Compile Include="NumberPrinter.cs" />
     <Compile Include="NumberProcessor.cs" />

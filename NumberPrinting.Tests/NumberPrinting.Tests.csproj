@@ -50,13 +50,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DivisibleBy3PrintFizz.cs" />
-    <Compile Include="DivisibleBy5PrintBuzz.cs" />
+    <Compile Include="DivisibleBy3PrintFizz.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DivisibleBy5PrintBuzz.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ExecutionResultTest.cs" />
-    <Compile Include="MockNumberProcessor.cs" />
-    <Compile Include="MockTextPrinter.cs" />
+    <Compile Include="MockNumberProcessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTextPrinter.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="NumberPrinterTest.cs" />
-    <Compile Include="NumberProcessorTest.cs" />
+    <Compile Include="NumberProcessorTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
