@@ -2,6 +2,6 @@
 {
     interface INumberPrinter
     {
-        void Print(int number);
+        void Print(int start, int end);
     }
 }

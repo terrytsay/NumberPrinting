@@ -47,9 +47,10 @@
     <Compile Include="ExecutionResult.cs" />
     <Compile Include="INumberHandler.cs" />
     <Compile Include="INumberPrinter.cs" />
+    <Compile Include="INumberProcessor.cs" />
     <Compile Include="ITextPrinter.cs" />
     <Compile Include="NumberPrinter.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="NumberProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

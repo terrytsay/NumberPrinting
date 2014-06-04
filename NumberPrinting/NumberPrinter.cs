@@ -1,66 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace NumberPrinting
 {
     public class NumberPrinter : INumberPrinter
     {
-        public int Minimum { get; private set; }
-        public int Maximum { get; private set; }
-
+        private readonly INumberProcessor _processor;
         private readonly ITextPrinter _printer;
-        private readonly List<INumberHandler> _handlers; 
 
-        public NumberPrinter(int minimum, int maximum, ITextPrinter printer)
+        public NumberPrinter(INumberProcessor processor, ITextPrinter printer)
         {
-            if (minimum > maximum)
-                throw new ArgumentOutOfRangeException("minimum", "Minimum should be smaller than Maximum.");
+            if(ReferenceEquals(processor, null))
+                throw new ArgumentNullException("processor");
             if(ReferenceEquals(printer, null))
                 throw new ArgumentNullException("printer");
 
-            Minimum = minimum;
-            Maximum = maximum;
-
+            _processor = processor;
             _printer = printer;
-            _handlers = new List<INumberHandler>();
         }
 
-        public void AddHandler(INumberHandler handler)
+        public void Print(int start, int end)
         {
-            _handlers.Add(handler);
-        }
+            if(start > end)
+                throw new ArgumentOutOfRangeException("start", "");
 
-        public void Print(int number)
-        {
-            if (number < Minimum || number > Maximum)
+            for (int i = start; i <= end; i++)
             {
-                const string format = "The input number should be between {0} to {1}.";
-                throw new ArgumentOutOfRangeException(string.Format(format, Minimum, Maximum));
-            }
+                var texts = _processor.Process(i);
 
-            var texts = GetTextsToPrint(number);
-
-            foreach (var text in texts)
-            {
-                _printer.Write(text);
-            }
-        }
-
-        private IEnumerable<string> GetTextsToPrint(int number)
-        {
-            var isHandled = false;
-            foreach (var handler in _handlers)
-            {
-                var result = handler.Handle(number);
-                if (result.IsHandled)
+                foreach (var text in texts)
                 {
-                    isHandled = true;
-                    yield return result.Result;
+                    _printer.Write(text);
                 }
-            }
 
-            if(!isHandled)
-                yield return number.ToString();
+                _printer.WriteLine();
+            }
         }
     }
 }

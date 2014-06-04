@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleTextPrinter.cs" />
+    <Compile Include="DivisibleBy3PrintFizz.cs" />
+    <Compile Include="DivisibleBy5PrintBuzz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

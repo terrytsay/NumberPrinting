@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NumberPrinting.Console
+﻿namespace NumberPrinting.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var printer = new NumberPrinter(1, 100, new ConsoleTextPrinter());
+            var processor = new NumberProcessor(1, 100);
+            processor.AddHandler(new DivisibleBy3PrintFizz());
+            processor.AddHandler(new DivisibleBy5PrintBuzz());
+            var textPrinter = new ConsoleTextPrinter();
 
-            var inputs = Enumerable.Range(1, 100);
+            var printer = new NumberPrinter(processor, textPrinter);
 
-            foreach (var input in inputs)
-            {
-                printer.Print(input);
-                System.Console.WriteLine();
-            }
+            printer.Print(1, 100);
 
             System.Console.ReadLine();
         }
